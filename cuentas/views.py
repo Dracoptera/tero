@@ -11,3 +11,9 @@ def medicamentos(request):
 
 def usuario(request):
     return render(request, 'cuentas/usuario.html')
+
+def alarmas(request):
+    return render(request, 'cuentas/alarmas.html')
+
+def agenda(request): 
+    return render(request, 'cuentas/agenda.html')
