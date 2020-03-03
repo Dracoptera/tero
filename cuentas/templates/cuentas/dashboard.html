@@ -1,0 +1,32 @@
+{% extends 'cuentas/main.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+
+  <div class="card-deck">
+    <div class="card text-center">
+      <img src="{% static "cuentas/sun.png" %}" class="card-img-top w-25 rounded mx-auto d-block alt="Día">
+      <div class="card-body">
+        <h5 class="card-title">Mañana</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <a href="/medicamentos/" class="btn btn-warning">Agregar</a>
+      </div>
+    </div>
+    <div class="card text-center">
+      <img src="{% static "cuentas/moon.png" %}" class="card-img-top w-25 rounded mx-auto d-block alt="Noche">
+      <div class="card-body">
+        <h5 class="card-title">Noche</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <a href="/medicamentos/" class="btn btn-dark">Agregar</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+{% endblock %}
