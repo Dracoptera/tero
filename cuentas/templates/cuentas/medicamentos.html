@@ -2,6 +2,51 @@
 
 {% block content %}
 
-<h1>Medicamentos</h1>
+{% load static %}
+<div class="container">
+
+        <div class="card card-body text-center">
+            <h2>Nuevo medicamento</h2>
+            <img src="{% static "cuentas/medicine.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+                <tr>
+                    <td><input type="search"></td>
+                </tr>
+
+                <thead class="thead-dark">
+                <tr>
+                    <th>Dosis</th>
+                </tr>
+                </thead>
+
+                <tr>
+                    <td><input type="number"></td>
+                </tr>
+
+                <thead class="thead-dark">
+                <tr>
+                    <th>Cantidad</th>
+                </tr>
+                </thead>
+
+                <tr>
+                    <td><input type="number"></td>
+                </tr>
+
+    
+        
+              
+                
+            </table>
+            <button type="button" class="btn btn-success btn-lg">Agregar</button>
+        </div>
+        
+</div>
+
 
 {% endblock %}
