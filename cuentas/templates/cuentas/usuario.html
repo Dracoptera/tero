@@ -7,7 +7,7 @@
 <div class="row">
 
 
-    <div class="col-md">
+    <div class="col-sm">
         <div class="card card-body text-center">
             <h2>Mi perfil</h2>
             <img src="{% static "cuentas/profile.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="col-md">
+    <div class="col-sm">
         <div class="card card-body text-center">
             <h2>Signos vitales</h2>
 
@@ -31,14 +31,38 @@
 
             <a class="btn btn-lg btn-primary m-2" href="">Añadir presión arterial</a>
             <a class="btn btn-lg btn-info m-2" href="">Cambiar peso</a>
-           
+
         </div>
     </div>
 
 
+    <div class="col-sm">
+        <div class="card card-body text-center">
+            <h2>Mis medicamentos</h2>
 
+            <img src="{% static "cuentas/medicine2.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Disponibles</th>
+                    </tr>
+                </thead>
+                {% for i in medicamentos %}
+                <tr>
+                    <td>{{i.nombre}}</td>
+                    <td>{{i.cantidad}}</td>
 
+                </tr>
+                {% endfor %}
+            </table>
 
+            <a class="btn btn-lg btn-secondary m-2" href="/medicamentos/">Añadir nuevo</a>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock %}

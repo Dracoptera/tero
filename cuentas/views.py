@@ -2,15 +2,21 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
+from .models import * 
 
 def index(request): 
-    return render(request, 'cuentas/dashboard.html')
+    usuario = Usuario.objects.get(id=1)
+    return render(request, 'cuentas/dashboard.html', {'usuario': usuario})
 
 def medicamentos(request):
-    return render(request, 'cuentas/medicamentos.html')
+    medicamentos = Medicamento.objects.all()
+    usuario = Usuario.objects.get(id=1)
+    return render(request, 'cuentas/medicamentos.html', {'medicamentos': medicamentos})
 
 def usuario(request):
-    return render(request, 'cuentas/usuario.html')
+    medicamentos = Medicamento.objects.all()
+    usuario = Usuario.objects.get(id=1)
+    return render(request, 'cuentas/usuario.html', {'medicamentos': medicamentos, 'usuario': usuario})
 
 def alarmas(request):
     return render(request, 'cuentas/alarmas.html')
