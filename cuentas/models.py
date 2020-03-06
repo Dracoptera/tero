@@ -6,6 +6,8 @@ class Usuario(models.Model):
     nombre = models.CharField(max_length=200, null=True)
     tel = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
+    nacimiento = models.DateField(null=True)
+    altura = models.FloatField(null=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
 
     # Clase para mostrar el nombre en la tabla desde el panel de admin.

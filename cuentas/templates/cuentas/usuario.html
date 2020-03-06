@@ -12,10 +12,10 @@
             <h2>Mi perfil</h2>
             <img src="{% static "cuentas/profile.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
             <hr>
-            <p><strong>Nombre:</strong> John Smith</p>
-            <p><strong>Edad:</strong> 77</p>
-            <p><strong>Altura:</strong> 1.77m</p>
-            <p><strong>CI:</strong> 2.425.764-2</p>
+            <p><strong>Nombre:</strong> {{usuario.nombre}}</p>
+            <p><strong>Nacimiento:</strong> {{usuario.nacimiento}}</p>
+            <p><strong>Altura:</strong> {{usuario.altura}} cm</p>
+            <p><strong>Email:</strong> {{usuario.email}}</p>
             <a class="btn btn-lg btn-success m-2" href="">Editar perfil</a>
         </div>
     </div>
@@ -36,31 +36,6 @@
     </div>
 
 
-    <div class="col-sm">
-        <div class="card card-body text-center">
-            <h2>Mis medicamentos</h2>
-
-            <img src="{% static "cuentas/medicine2.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
-            <hr>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Disponibles</th>
-                    </tr>
-                </thead>
-                {% for i in medicamentos %}
-                <tr>
-                    <td>{{i.nombre}}</td>
-                    <td>{{i.cantidad}}</td>
-
-                </tr>
-                {% endfor %}
-            </table>
-
-            <a class="btn btn-lg btn-secondary m-2" href="/medicamentos/">Añadir nuevo</a>
-        </div>
-    </div>
 </div>
 
 

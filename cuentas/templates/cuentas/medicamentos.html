@@ -5,9 +5,9 @@
 {% load static %}
 <div class="container">
 
-        <div class="card card-body text-center">
+        <div class="card card-body text-center m-4">
             <h2>Nuevo medicamento</h2>
-            <img src="{% static "cuentas/medicine.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
+            <img src="{% static "cuentas/pills.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
@@ -20,7 +20,7 @@
 
                 <thead class="thead-dark">
                 <tr>
-                    <th><h4>Dosis</h4></th>
+                    <th><h4>Dosis (mg)</h4></th>
                 </tr>
                 </thead>
 
@@ -46,6 +46,34 @@
             <button type="button" class="btn btn-success btn-lg"><h4>Agregar</h4></button>
         </div>
         
+       
+            <div class="card card-body text-center m-4">
+                <h2>Mis medicamentos</h2>
+    
+                <img src="{% static "cuentas/medicine2.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
+                <hr>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Disponibles</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    {% for i in medicamentos %}
+                    <tr>
+                        <td>{{i.nombre}}</td>
+                        <td>{{i.cantidad}}</td>
+                        <td><a class="btn btn-md btn-primary" href="">Modificar</a></td>
+                        <td><a class="btn btn-md btn-danger" href="">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+    
+    
+            </div>
+      
 </div>
 
 
