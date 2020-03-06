@@ -5,3 +5,4 @@ class MedicamentoForm(ModelForm):
     class Meta:
         model = Medicamento 
         fields = '__all__'
+        # usar lista en vez de __all__ en caso de querer añadir solo algunos en específico.

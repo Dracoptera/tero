@@ -11,9 +11,9 @@
 
             <form action="{% url 'eliminar' medicamento.id %}" method="POST">
                 {% csrf_token %}
-                <a class="btn btn-warning btn-lg" href="{% url 'medicamentos' %}">Cancelar</a>
+                <a class="btn btn-warning btn-lg m-3" href="{% url 'medicamentos' %}">Cancelar</a>
             
-                <input class="btn btn-danger btn-lg" type="submit" name="Confirmar">
+                <input class="btn btn-danger btn-lg m-3" type="submit" name="Confirmar" value="Confirmar">
             </form>  
         </div>
     

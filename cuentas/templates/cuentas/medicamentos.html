@@ -4,24 +4,40 @@
 
 {% load static %}
 <div class="row">
+    <div class="col-sm-6">
 
     <div class="card card-body text-center m-4">
         <h2>Nuevo medicamento</h2>
         <img src="{% static "cuentas/pills.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
         
         
-        <form action="" method="post">
+        <form class="m-3" action="" method="post">
+            
             {% csrf_token %}
-            {{med_form}}
-
-            <input type="submit" class="btn btn-success btn-lg" name="Submit">
-   
+            <!-- {{med_form}} -->
+            {% for field in med_form %}
+            <div class="form-group row">
+                {{ field.errors }}
+                <div class="col-sm-5 col-form-label">
+                <strong>{{ field.label_tag }} </strong>
+            </div>
+            <div class="col-sm-7">
+                {{ field }}
+            </div>
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+            <input type="submit" class="btn btn-success btn-lg" name="Confirmar" value="Agregar">
+       
         </form>
 
         
     </div>
+</div>
 
-
+<div class="col-sm-6">
     <div class="card card-body text-center m-4">
         <h2>Mis medicamentos</h2>
 
@@ -50,6 +66,7 @@
 
 
     </div>
+</div>
 
 </div>
 

@@ -3,51 +3,44 @@
 {% block content %}
 {% load static %}
 
-<div class="container">
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
 
     <div class="card card-body text-center m-4">
         <h1>{{medicamento.nombre}}</h1>
         <img src="{% static "cuentas/pill.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
         
-        <h2>Dosis: {{medicamento.dosis}} {{medicamento.tipo_dosis}}</h2>
-        <h2>Disponibles: {{medicamento.cantidad}}</h2>
-        <table class="table table-hover">
-
-            <thead class="thead-light">
-                <tr>
-                    <th>
-                        Dosis
-                    </th>
-                </tr>
-            </thead>
-
-            <tr>
-                <td><input type="number"></td>
-            </tr>
-
-            <thead class="thead-light">
-                <tr>
-                    <th>
-                        Cantidad
-                    </th>
-                </tr>
-            </thead>
-
-            <tr>
-                <td><input type="number"></td>
-            </tr>
-
-
-
-
-        </table>
-        <a href="" class="btn btn-success btn-lg m-2">
-            <h4>Confirmar cambios</h4>
-        </a>
-        <a class="btn btn-primary btn-lg m-2" href="/medicamentos/">
-            <h4>Ver todos</h4>
-        </a>
+        <h2><strong>Dosis:</strong> {{medicamento.dosis}} {{medicamento.tipo_dosis}}</h2>
+        <h2><strong>Disponibles:</strong> {{medicamento.cantidad}}</h2>
+        
+        <form class="m-3" action="" method="post">
+            
+            {% csrf_token %}
+            <!-- {{med_form}} -->
+            {% for field in med_form %}
+            <div class="form-group row">
+                {{ field.errors }}
+                <div class="col-sm-5 col-form-label">
+                <strong>{{ field.label_tag }} </strong>
+            </div>
+            <div class="col-sm-7">
+                {{ field }}
+            </div>
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+            <input type="submit" class="btn btn-success btn-lg" name="Confirmar" value="Confirmar">
+            <a class="btn btn-primary btn-lg m-2" href="/medicamentos/">
+                Ver todos
+            </a>
+        </form>
+        
     </div>
+</div>
+<div class="col-sm-2"></div>
 
 </div>
 
