@@ -8,41 +8,17 @@
     <div class="card card-body text-center m-4">
         <h2>Nuevo medicamento</h2>
         <img src="{% static "cuentas/pills.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tr>
-                <td><input type="search"></td>
-            </tr>
+        
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            {{med_form}}
 
-            <thead class="thead-dark">
-                <tr>
-                    <th>Dosis (mg o ml)</th>
-                </tr>
-            </thead>
+            <input type="submit" class="btn btn-success btn-lg" name="Submit">
+   
+        </form>
 
-            <tr>
-                <td><input type="number"></td>
-            </tr>
-
-            <thead class="thead-dark">
-                <tr>
-                    <th>Cantidad</th>
-                </tr>
-            </thead>
-
-            <tr>
-                <td><input type="number"></td>
-            </tr>
-
-        </table>
-
-        <button type="button" class="btn btn-success btn-lg">
-            <h4>Agregar</h4>
-        </button>
+        
     </div>
 
 
@@ -64,10 +40,10 @@
             {% for medicamento in medicamentos %}
             <tr>
                 <td>{{medicamento.nombre}}</td>
-                <td>{{medicamento.dosis}}</td>
+                <td>{{medicamento.dosis}} {{medicamento.tipo_dosis}}</td>
                 <td>{{medicamento.cantidad}}</td>
                 <td><a class="btn btn-md btn-primary" href="{% url 'medicamento' medicamento.id %}">Modificar</a></td>
-                <td><a class="btn btn-md btn-danger" href="">Eliminar</a></td>
+                <td><a class="btn btn-md btn-danger" href="{% url 'eliminar' medicamento.id %}">Eliminar</a></td>
             </tr>
             {% endfor %}
         </table>

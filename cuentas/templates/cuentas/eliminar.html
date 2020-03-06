@@ -1,0 +1,24 @@
+{% extends 'cuentas/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="container">
+   
+        <div class="card card-body text-center m-4">
+            <p>¿Realmente quiere eliminar <strong>{{medicamento.nombre}}</strong>?</p>
+
+            <form action="{% url 'eliminar' medicamento.id %}" method="POST">
+                {% csrf_token %}
+                <a class="btn btn-warning btn-lg" href="{% url 'medicamentos' %}">Cancelar</a>
+            
+                <input class="btn btn-danger btn-lg" type="submit" name="Confirmar">
+            </form>  
+        </div>
+    
+</div>
+
+
+
+{% endblock %}

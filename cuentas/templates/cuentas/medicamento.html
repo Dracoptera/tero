@@ -9,7 +9,7 @@
         <h1>{{medicamento.nombre}}</h1>
         <img src="{% static "cuentas/pill.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
         
-        <h2>Dosis: {{medicamento.dosis}}</h2>
+        <h2>Dosis: {{medicamento.dosis}} {{medicamento.tipo_dosis}}</h2>
         <h2>Disponibles: {{medicamento.cantidad}}</h2>
         <table class="table table-hover">
 
