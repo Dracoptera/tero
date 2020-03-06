@@ -15,13 +15,13 @@ def medicamentos(request):
 
     return render(request, 'cuentas/medicamentos.html', contexto)
 
-# def medicamento(request, pk_med):
-#     medicamentos = Medicamento.objects.all()
-#     medicamento = Medicamento.objects.get(id=pk_med)
-#     usuario = Usuario.objects.get(id=1)
+def medicamento(request, pk_med):
+    medicamentos = Medicamento.objects.all()
+    medicamento = Medicamento.objects.get(id=pk_med)
+    usuario = Usuario.objects.get(id=1)
 
-#     contexto = {'medicamento': medicamento, 'medicamentos': medicamentos, 'usuario': usuario}
-#     return render(request, 'cuentas/medicamento.html', contexto)
+    contexto = {'medicamento': medicamento, 'medicamentos': medicamentos, 'usuario': usuario}
+    return render(request, 'cuentas/medicamento.html', contexto)
 
 def usuario(request):
     medicamentos = Medicamento.objects.all()
