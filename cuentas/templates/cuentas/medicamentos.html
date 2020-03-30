@@ -1,74 +1,79 @@
-{% extends 'cuentas/main.html' %}
-
-{% block content %}
-
-{% load static %}
+{% extends 'cuentas/main.html' %} {% block content %} {% load static %}
 <div class="row">
-    <div class="col-sm-6">
-
+  <div class="col-sm-6">
     <div class="card card-body text-center m-4">
-        <h2>Nuevo medicamento</h2>
-        <img src="{% static "cuentas/pills.png" %}" class="card-img-top w-25 rounded mx-auto d-block m-2">
-        
-        
-        <form class="m-3" action="" method="post">
-            
-            {% csrf_token %}
-            <!-- {{med_form}} -->
-            {% for field in med_form %}
-            <div class="form-group row">
-                {{ field.errors }}
-                <div class="col-sm-5 col-form-label">
-                <strong>{{ field.label_tag }} </strong>
-            </div>
-            <div class="col-sm-7">
-                {{ field }}
-            </div>
-                {% if field.help_text %}
-                <p class="help">{{ field.help_text|safe }}</p>
-                {% endif %}
-            </div>
+      <h2>Nuevo medicamento</h2>
+      <img src="{% static "cuentas/pills.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block m-2">
+
+      <form class="m-3" action="" method="post">
+        {% csrf_token %}
+        <!-- {{med_form}} -->
+        {% for field in med_form %}
+        <div class="form-group">
+          {{ field.errors }}
+
+          <strong>{{ field.label_tag }} </strong>
+
+          <div class="form-control">
+            {{ field }}
+          </div>
+          {% if field.help_text %}
+          <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+        </div>
         {% endfor %}
-            <input type="submit" class="btn btn-success btn-lg" name="Confirmar" value="Agregar">
-       
-        </form>
-
-        
+        <input
+          type="submit"
+          class="btn btn-success btn-lg"
+          name="Confirmar"
+          value="Agregar"
+        />
+      </form>
     </div>
-</div>
+  </div>
 
-<div class="col-sm-6">
+  <div class="col-sm-6">
     <div class="card card-body text-center m-4">
-        <h2>Mis medicamentos</h2>
+      <h2>Mis medicamentos</h2>
 
-        <img src="{% static "cuentas/medicine2.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
-        <hr>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Dosis</th>
-                    <th>Disponibles</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            {% for medicamento in medicamentos %}
-            <tr>
-                <td>{{medicamento.nombre}}</td>
-                <td>{{medicamento.dosis}} {{medicamento.tipo_dosis}}</td>
-                <td>{{medicamento.cantidad}}</td>
-                <td><a class="btn btn-md btn-primary" href="{% url 'medicamento' medicamento.id %}">Modificar</a></td>
-                <td><a class="btn btn-md btn-danger" href="{% url 'eliminar' medicamento.id %}">Eliminar</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-
-
+      <img src="{% static "cuentas/medicine2.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block">
+      <hr />
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dosis</th>
+            <th>Disponibles</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        {% for medicamento in medicamentos %}
+        <tr>
+          <td>{{medicamento.nombre}}</td>
+          <td>{{medicamento.dosis}} {{medicamento.tipo_dosis}}</td>
+          <td>{{medicamento.cantidad}}</td>
+          <td>
+            <a
+              class="btn btn-md btn-primary"
+              href="{% url 'medicamento' medicamento.id %}"
+              >Modificar</a
+            >
+          </td>
+          <td>
+            <a
+              class="btn btn-md btn-danger"
+              href="{% url 'eliminar' medicamento.id %}"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
+  </div>
 </div>
-
-</div>
-
 
 {% endblock %}

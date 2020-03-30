@@ -8,6 +8,10 @@ header a {
 
 header a:hover {
     text-decoration: none;
-    color: #3282b8;
+    color          : #3282b8;
 }
 
+div.form-control {
+    border       : none;
+    border-radius: none;
+}
