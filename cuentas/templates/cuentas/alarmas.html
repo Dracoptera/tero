@@ -56,10 +56,14 @@
           <td>{{a.hora}}</td>
           <td>{{a.cantidad}}</td>
           <td>
-            <a class="btn btn-md btn-primary" href="#">Modificar</a>
+            <a class="btn btn-md btn-primary" href="{% url 'alarma' a.id %}"
+              >Modificar</a
+            >
           </td>
           <td>
-            <a class="btn btn-md btn-danger" href="#">Eliminar</a>
+            <a class="btn btn-md btn-danger" href="{% url 'eliminar_al' a.id %}"
+              >Eliminar</a
+            >
           </td>
         </tr>
         {% endfor %}

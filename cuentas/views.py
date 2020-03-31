@@ -66,19 +66,46 @@ def usuario(request):
 def alarmas(request):
     alarma_form = AlarmaForm()
     if request.method == 'POST':
+        #print('Printing POST:', request.POST)
         alarma_form = AlarmaForm(request.POST)
         if alarma_form.is_valid():
             alarma_form.save()
 
-    medicamentos = Medicamento.objects.all()
-    usuario = Usuario.objects.get(id=1)
     alarmas = Alarma.objects.all()
-    contexto = {'medicamentos': medicamentos,
-                'usuario': usuario, 'alarma_form': alarma_form, 'alarmas': alarmas}
+    usuario = Usuario.objects.get(id=1)
+
+    contexto = {'alarmas': alarmas, 'alarma_form': alarma_form}
 
     return render(request, 'cuentas/alarmas.html', contexto)
 
 
-def agenda(request):
+def alarma(request, pk_al):
+    alarmas = Alarma.objects.all()
+    alarma = Alarma.objects.get(id=pk_al)
 
+    alarma_form = AlarmaForm(instance=alarma)
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        alarma_form = AlarmaForm(request.POST, instance=alarma)
+        if alarma_form.is_valid():
+            alarma_form.save()
+
+    contexto = {'alarmas': alarmas, 'alarma': alarma,
+                'alarma_form': alarma_form}
+    return render(request, 'cuentas/alarma.html', contexto)
+
+
+def eliminar_al(request, pk_al):
+    alarma = Alarma.objects.get(id=pk_al)
+    del_form = AlarmaForm(instance=alarma)
+
+    if request.method == 'POST':
+        alarma.delete()
+        return redirect('/alarmas/')
+
+    contexto = {'alarma': alarma, 'del_form': del_form}
+    return render(request, 'cuentas/eliminar_al.html', contexto)
+
+
+def agenda(request):
     return render(request, 'cuentas/agenda.html')

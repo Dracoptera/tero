@@ -1,0 +1,46 @@
+{% extends 'cuentas/main.html' %} {% block content %} {% load static %}
+
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="card card-body text-center m-4">
+      <h1>Alarma de {{alarma.medicamento}}</h1>
+      <img src="{% static "cuentas/alert.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block m-2">
+
+      <h2><strong>Hora:</strong> {{alarma.hora}}</h2>
+      <h2><strong>Cantidad:</strong> {{alarma.cantidad}}</h2>
+
+      <form class="m-3" action="" method="post">
+        {% csrf_token %}
+        <!-- {{med_form}} -->
+        {% for field in alarma_form %}
+        <div class="form-group row">
+          {{ field.errors }}
+          <div class="col-sm-5 col-form-label">
+            <strong>{{ field.label_tag }} </strong>
+          </div>
+          <div class="col-sm-7">
+            {{ field }}
+          </div>
+          {% if field.help_text %}
+          <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+        <input
+          type="submit"
+          class="btn btn-success btn-lg"
+          name="Confirmar"
+          value="Confirmar"
+        />
+        <a class="btn btn-primary btn-lg m-2" href="/alarmas/">
+          Ver todas
+        </a>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+{% endblock %}

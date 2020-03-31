@@ -13,5 +13,9 @@ header a:hover {
 
 div.form-control {
     border       : none;
+<<<<<<< HEAD
     border-radius: none;
+=======
+    border-radius: none
+>>>>>>> Alarmas
 }
