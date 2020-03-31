@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
+# añadir includes y la app creada (cuentas)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

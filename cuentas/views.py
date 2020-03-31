@@ -109,3 +109,7 @@ def eliminar_al(request, pk_al):
 
 def agenda(request):
     return render(request, 'cuentas/agenda.html')
+
+
+def test(request):
+    return HttpResponse("Done!")

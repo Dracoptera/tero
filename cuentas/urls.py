@@ -11,4 +11,5 @@ urlpatterns = [
     path('alarma/<str:pk_al>/', views.alarma, name="alarma"),
     path('eliminar_al/<str:pk_al>/', views.eliminar_al, name="eliminar_al"),
     path('agenda/', views.agenda, name="agenda"),
+    path('test/', views.test, name="test")
 ]
