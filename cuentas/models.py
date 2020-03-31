@@ -44,14 +44,8 @@ class Medicamento(models.Model):
 
 
 class Alarma(models.Model):
-<<<<<<< HEAD
-    medicamento = models.ForeignKey(
-        Medicamento, null=True, on_delete=models.SET_NULL)
-=======
-
     medicamento = models.ForeignKey(
         Medicamento, null=True, on_delete=models.CASCADE)
->>>>>>> Alarmas
     hora = models.TimeField(auto_now_add=False, null=True,
                             default=datetime.now().strftime("%H:%M"))
     cantidad = models.IntegerField(null=True, default=1)
@@ -59,8 +53,4 @@ class Alarma(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-<<<<<<< HEAD
-        return "%s Alarma " % self.medicamento.nombre
-=======
         return self.medicamento.nombre
->>>>>>> Alarmas
