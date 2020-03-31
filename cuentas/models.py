@@ -1,6 +1,7 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
+
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=200, null=True)
@@ -12,7 +13,8 @@ class Usuario(models.Model):
 
     # Clase para mostrar el nombre en la tabla desde el panel de admin.
     def __str__(self):
-        return self.nombre 
+        return self.nombre
+
 
 class Medicamento(models.Model):
     TIPOS = (
@@ -36,14 +38,20 @@ class Medicamento(models.Model):
     cantidad = models.IntegerField(null=True)
     usuario = models.ForeignKey(Usuario, null=True, on_delete=models.SET_NULL)
     fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
+
     def __str__(self):
-        return self.nombre 
+        return self.nombre
+
 
 class Alarma(models.Model):
-    usuario = models.ForeignKey(Usuario, null=True, on_delete=models.SET_NULL)
-    medicamento = models.ForeignKey(Medicamento, null=True, on_delete=models.SET_NULL) 
-    estado = models.CharField(max_length=200, null=True)
+
+    medicamento = models.ForeignKey(
+        Medicamento, null=True, on_delete=models.CASCADE)
+    hora = models.TimeField(auto_now_add=False, null=True,
+                            default=datetime.now().strftime("%H:%M"))
+    cantidad = models.IntegerField(null=True, default=1)
+
     fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
+
     def __str__(self):
-        return self.medicamento 
-    
+        return self.medicamento.nombre

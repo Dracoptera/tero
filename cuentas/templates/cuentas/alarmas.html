@@ -1,7 +1,71 @@
-{% extends 'cuentas/main.html' %}
+{% extends 'cuentas/main.html' %} {% block content %} {% load static %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-body text-center m-4">
+      <h2>Nueva alarma</h2>
+      <img src="{% static "cuentas/alarm.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block m-2">
 
-{% block content %}
+      <form class="m-3" action="" method="post">
+        {% csrf_token %}
+        <!-- {{alarma_form}} -->
+        {% for field in alarma_form %}
+        <div class="form-group">
+          {{ field.errors }}
 
-<h1>Alarmas</h1>
+          <strong>{{ field.label_tag }} </strong>
+
+          <div class="form-control">
+            {{ field }}
+          </div>
+          {% if field.help_text %}
+          <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+        <input
+          type="submit"
+          class="btn btn-success btn-lg"
+          name="Confirmar"
+          value="Agregar"
+        />
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card card-body text-center m-4">
+      <h2>Programadas</h2>
+
+      <img src="{% static "cuentas/bell.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block">
+      <hr />
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Hora</th>
+            <th>Cantidad</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        {% for a in alarmas %}
+        <tr>
+          <td>{{a.medicamento}}</td>
+          <td>{{a.hora}}</td>
+          <td>{{a.cantidad}}</td>
+          <td>
+            <a class="btn btn-md btn-primary" href="#">Modificar</a>
+          </td>
+          <td>
+            <a class="btn btn-md btn-danger" href="#">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
