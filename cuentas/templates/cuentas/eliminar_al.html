@@ -9,7 +9,7 @@
       <strong>{{alarma.medicamento}}</strong>?
     </p>
 
-    <form action="{% url 'eliminar' alarma.id %}" method="POST">
+    <form action="{% url 'eliminar_al' alarma.id %}" method="POST">
       {% csrf_token %}
       <a class="btn btn-warning btn-lg m-3" href="{% url 'alarmas' %}"
         >Cancelar</a
