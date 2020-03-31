@@ -72,9 +72,9 @@ def alarmas(request):
 
     medicamentos = Medicamento.objects.all()
     usuario = Usuario.objects.get(id=1)
-
+    alarmas = Alarma.objects.all()
     contexto = {'medicamentos': medicamentos,
-                'usuario': usuario, 'alarma_form': alarma_form}
+                'usuario': usuario, 'alarma_form': alarma_form, 'alarmas': alarmas}
 
     return render(request, 'cuentas/alarmas.html', contexto)
 

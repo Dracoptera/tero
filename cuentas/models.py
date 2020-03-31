@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 
 
@@ -44,9 +44,12 @@ class Medicamento(models.Model):
 
 
 class Alarma(models.Model):
-    medicamento = models.OneToOneField(
-        Medicamento, null=False, on_delete=models.CASCADE, primary_key=True)
-    hora = models.TimeField(auto_now_add=False, null=True)
+    medicamento = models.ForeignKey(
+        Medicamento, null=True, on_delete=models.SET_NULL)
+    hora = models.TimeField(auto_now_add=False, null=True,
+                            default=datetime.now().strftime("%H:%M"))
+    cantidad = models.IntegerField(null=True, default=1)
+
     fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

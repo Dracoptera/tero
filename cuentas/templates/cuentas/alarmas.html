@@ -44,30 +44,22 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Dosis</th>
-            <th>Disponibles</th>
+            <th>Hora</th>
+            <th>Cantidad</th>
             <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
         </thead>
-        {% for medicamento in medicamentos %}
+        {% for a in alarmas %}
         <tr>
-          <td>{{medicamento.nombre}}</td>
-          <td>{{medicamento.dosis}} {{medicamento.tipo_dosis}}</td>
-          <td>{{medicamento.cantidad}}</td>
+          <td>{{a.medicamento}}</td>
+          <td>{{a.hora}}</td>
+          <td>{{a.cantidad}}</td>
           <td>
-            <a
-              class="btn btn-md btn-primary"
-              href="{% url 'medicamento' medicamento.id %}"
-              >Modificar</a
-            >
+            <a class="btn btn-md btn-primary" href="#">Modificar</a>
           </td>
           <td>
-            <a
-              class="btn btn-md btn-danger"
-              href="{% url 'eliminar' medicamento.id %}"
-              >Eliminar</a
-            >
+            <a class="btn btn-md btn-danger" href="#">Eliminar</a>
           </td>
         </tr>
         {% endfor %}
