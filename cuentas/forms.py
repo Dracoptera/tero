@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, TimeField
 # .models con punto porque viene de la misma carpeta
-from .models import Medicamento, Alarma
+from .models import Medicamento, Alarma, Usuario
 
 
 class TimeInput(forms.TimeInput):
@@ -25,3 +25,9 @@ class AlarmaForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["hora"].widget = TimeInput()
+
+
+class UsuarioForm(ModelForm):
+    class Meta:
+        model = Usuario
+        fields = '__all__'

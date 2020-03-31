@@ -1,43 +1,36 @@
-{% extends 'cuentas/main.html' %}
-
-{% block content %}
-{% load static %}
-
+{% extends 'cuentas/main.html' %} {% block content %} {% load static %}
 
 <div class="row">
-
-
-    <div class="col-sm">
-        <div class="card card-body text-center">
-            <h2>Mi perfil</h2>
-            <img src="{% static "cuentas/profile.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
-            <hr>
-            <p><strong>Nombre:</strong> {{usuario.nombre}}</p>
-            <p><strong>Nacimiento:</strong> {{usuario.nacimiento}}</p>
-            <p><strong>Altura:</strong> {{usuario.altura}} cm</p>
-            <p><strong>Email:</strong> {{usuario.email}}</p>
-            <a class="btn btn-lg btn-success m-2" href="">Editar perfil</a>
-        </div>
+  <div class="col-sm">
+    <div class="card card-body text-center">
+      <h2>Mi perfil</h2>
+      <img src="{% static "cuentas/profile.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block">
+      <hr />
+      <p><strong>Nombre:</strong> {{usuario.nombre}}</p>
+      <p><strong>Nacimiento:</strong> {{usuario.nacimiento}}</p>
+      <p><strong>Altura:</strong> {{usuario.altura}} cm</p>
+      <p><strong>Email:</strong> {{usuario.email}}</p>
+      <a class="btn btn-lg btn-success m-2" href="{% url 'perfil' %}"
+        >Editar perfil</a
+      >
     </div>
+  </div>
 
-    <div class="col-sm">
-        <div class="card card-body text-center">
-            <h2>Signos vitales</h2>
+  <div class="col-sm">
+    <div class="card card-body text-center">
+      <h2>Signos vitales</h2>
 
-            <img src="{% static "cuentas/pressure.png" %}" class="card-img-top w-25 rounded mx-auto d-block">
-            <hr>
-            <p><Strong>Presión arterial:</Strong> 120/80 mm Hg</p>
-            <p><strong>Peso: </strong>77kg</p>
+      <img src="{% static "cuentas/pressure.png" %}" class="card-img-top w-25
+      rounded mx-auto d-block">
+      <hr />
+      <p><strong>Presión arterial:</strong> 120/80 mm Hg</p>
+      <p><strong>Peso: </strong>77kg</p>
 
-            <a class="btn btn-lg btn-primary m-2" href="">Añadir presión arterial</a>
-            <a class="btn btn-lg btn-info m-2" href="">Cambiar peso</a>
-
-        </div>
+      <a class="btn btn-lg btn-primary m-2" href="">Añadir presión arterial</a>
+      <a class="btn btn-lg btn-info m-2" href="">Cambiar peso</a>
     </div>
-
-
+  </div>
 </div>
-
-
 
 {% endblock %}

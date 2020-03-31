@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import MedicamentoForm, AlarmaForm
+from .forms import MedicamentoForm, AlarmaForm, UsuarioForm
 
 # Create your views here.
 from .models import *
@@ -61,6 +61,21 @@ def usuario(request):
     medicamentos = Medicamento.objects.all()
     usuario = Usuario.objects.get(id=1)
     return render(request, 'cuentas/usuario.html', {'medicamentos': medicamentos, 'usuario': usuario})
+
+
+def perfil(request):
+    usuario = Usuario.objects.get(id=1)
+
+    usuario_form = UsuarioForm(instance=usuario)
+    if request.method == 'POST':
+        #print('Printing POST:', request.POST)
+        usuario_form = UsuarioForm(request.POST, instance=usuario)
+        if usuario_form.is_valid():
+            usuario_form.save()
+
+    contexto = {
+        'usuario': usuario, 'usuario_form': usuario_form}
+    return render(request, 'cuentas/perfil.html', contexto)
 
 
 def alarmas(request):
